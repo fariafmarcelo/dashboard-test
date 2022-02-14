@@ -1,17 +1,31 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useParams } from 'react-router-dom';
+
 import {
     Container,
     Content,
     Filters,
 } from './styles';
-import { useParams } from 'react-router-dom';
 
 import ContentHeader from '../../components/ContentHeader';
 import SelectInput from '../../components/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
+import Gains from '../../repositories/gains';
+import Expenses from '../../repositories/expenses';
+
+import formatCurrency from '../../utils/formatCurrency';
+import formatDate from '../../utils/formatDate';
+
+interface IData {
+    description: string,
+    amountFormatted: string,
+    frequency: string,
+    dateFormatted: string,
+    tagColor: string,
+}
 
 const List: React.FC = () => {
-
+    const [data, setData] = useState<IData[]>([]);
     const { type } = useParams();
 
     const title = useMemo(() => {
@@ -33,6 +47,24 @@ const List: React.FC = () => {
         {value: 2021, label: 2021},
         {value: 2020, label: 2020},
     ];
+
+    const listData = useMemo(() => {
+        return type === 'entry-balance' ? Gains : Expenses;
+    }, [type]);
+
+    useEffect(() => {
+        const response = listData.map(item => {
+            return {
+                description: item.description,
+                amountFormatted: formatCurrency(Number(item.amount)),
+                frequency: item.frequency,
+                dateFormatted: formatDate(item.date),
+                tagColor: item.frequency === 'recorrente' ? '#4E41F0' : '#E44C4E',
+            }
+        });
+
+        setData(response);
+    }, [listData]);
 
     return (
         <Container>
@@ -57,12 +89,17 @@ const List: React.FC = () => {
             </Filters>
 
             <Content>
-                <HistoryFinanceCard
-                    tagColor="#E44C4E"
-                    title="Conta de Luz"
-                    subtitle="27/07/2020"
-                    amount="R$ 130,00"
-                />
+                {
+                    data.map((item, index)  => (
+                        <HistoryFinanceCard
+                            key={index}
+                            tagColor={item.tagColor}
+                            title={item.description}
+                            subtitle={item.dateFormatted}
+                            amount={item.amountFormatted}
+                        />
+                    ))
+                }
             </Content>
         </Container>
     );
