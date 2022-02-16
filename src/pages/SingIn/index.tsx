@@ -8,6 +8,8 @@ import {
     FormTitle,
 } from './styles';
 
+import Input from '../../components/Input';
+
 import LogoImg from '../../assets/logo.svg'
 
 const SingIn: React.FC = () => {
@@ -18,11 +20,19 @@ const SingIn: React.FC = () => {
                 <Title>Minha Dashboard</Title>
             </Logo>
 
-            <Form>
+            <Form onSubmit={() => {}}>
                 <FormTitle>Entrar</FormTitle>
 
-                <input type="text"></input>
-                <input type="text"></input>
+                <Input
+                    type="email"
+                    required
+                    placeholder='e-mail'
+                />
+                <Input
+                    type="password"
+                    required
+                    placeholder='senha'
+                />
 
                 <button type="submit">Acessar</button>
             </Form>
