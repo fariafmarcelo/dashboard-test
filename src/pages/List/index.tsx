@@ -36,7 +36,7 @@ const List: React.FC = () => {
         if (movimentType === 'entry-balance') {
             return {
                 title: 'Entradas',
-                lineColor: '#F7931B',
+                lineColor: '#4E41F0',
                 listData: Gains
             }
         } else {
@@ -149,8 +149,16 @@ const List: React.FC = () => {
     return (
         <Container>
             <ContentHeader title={pageData.title} lineColor={pageData.lineColor}>
-                <SelectInput options={Months} onChange={(e) => handleMonthSelected(e.target.value)} defaultValue={monthSelected} />
-                <SelectInput options={Years} onChange={(e) => handleYearSelected(e.target.value)} defaultValue={yearSelected} />
+                <SelectInput
+                    options={Months}
+                    onChange={(e) => handleMonthSelected(e.target.value)}
+                    defaultValue={monthSelected}
+                />
+                <SelectInput
+                    options={Years}
+                    onChange={(e) => handleYearSelected(e.target.value)}
+                    defaultValue={yearSelected}
+                />
             </ContentHeader>
 
             <Filters>
