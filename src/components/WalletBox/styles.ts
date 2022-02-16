@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import CountUp from 'react-countup';
 
 interface IContainerProps {
     color: string,
