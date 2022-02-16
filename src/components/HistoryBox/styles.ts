@@ -5,58 +5,47 @@ interface IPercentageProps {
 }
 
 export const Container = styled.div`
-    width: 48%;
-    height: 260px;
-
-    margin: 10px 0;
+    width: 100%;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
 
     background-color: ${props => props.theme.colors.tertiary};
     color: ${props => props.theme.colors.white};
 
-    border-radius: 7px;
+    margin: 10px 0;
+    padding: 30px 20px;
 
-    display: flex;
+    border-radius: 7px;
 `;
 
 export const Title = styled.h2`
     margin-bottom: 20px;
+    padding-left: 16px;
 `;
 
-export const SideLeft = styled.aside`
-    padding: 30px 20px;
-`;
-
-export const SideRight = styled.main`
-    display: flex;
+export const ChartContainer = styled.div`
     flex: 1;
-    justify-content: center;
+    height: 260px;
+`;
+
+export const Header = styled.header`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 `;
 
 export const LegendContainer = styled.ul`
     list-style: none;
-
-    padding-right: 15px;
-    max-height: 175px;
-    overflow-y: scroll;
-
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: ${props => props.theme.colors.secondary};
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: ${props => props.theme.colors.tertiary};
-    }
+    display: flex;
+    padding-right: 16px;
 `;
 
 export const Legend = styled.li`
     display: flex;
     align-items: center;
 
+    margin-left: 7px;
     margin-bottom: 7px;
     font-size: 14px;
 `;
@@ -64,8 +53,8 @@ export const Legend = styled.li`
 export const Percentage = styled.div<IPercentageProps>`
     background-color: ${props => props.color};
 
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
 
     font-size: 16px;
@@ -76,4 +65,3 @@ export const Percentage = styled.div<IPercentageProps>`
 export const Message = styled.span`
     margin-left: 5px;
 `;
-

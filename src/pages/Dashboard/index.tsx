@@ -9,6 +9,7 @@ import ContentHeader from '../../components/ContentHeader';
 import WalletBox from '../../components/WalletBox';
 import MessageBox from '../../components/MessageBox';
 import PieChartBox from '../../components/PieChartBox';
+import HistoryBox from '../../components/HistoryBox';
 
 import Expenses from '../../repositories/expenses';
 import Gains from '../../repositories/gains';
@@ -114,7 +115,7 @@ const Dashboard: React.FC = () => {
             return {
                 title: 'Muito bem!',
                 description: 'Sua carteira está positiva!',
-                footerText: 'Continue assim. Considere investir o seu saldo',
+                footerText: 'Continue assim. Considere investir o seu saldo.',
                 icon: HappyImg,
             }
         }
@@ -144,6 +145,54 @@ const Dashboard: React.FC = () => {
         return data;
 
     }, [totalGains, totalExpenses]);
+
+    const historyData = useMemo(() => {
+        return listOfMonths.map((_, month) => {
+
+            let amountEntry: number = 0;
+            Gains.forEach(gain => {
+                const date = new Date(gain.date);
+                const gainMonth = date.getMonth();
+                const gainYear = date.getFullYear();
+
+                if (gainMonth === month && gainYear === yearSelected) {
+                    try {
+                        amountEntry += Number(gain.amount);
+                    } catch {
+                        throw new Error('amountEntry is invalid. amountEntry must be valid number');
+                    }
+                }
+            });
+
+            let amountOutput: number = 0;
+            Expenses.forEach(expense => {
+                const date = new Date(expense.date);
+                const gainMonth = date.getMonth();
+                const gainYear = date.getFullYear();
+
+                if (gainMonth === month && gainYear === yearSelected) {
+                    try {
+                        amountOutput += Number(expense.amount);
+                    } catch {
+                        throw new Error('amountEntry is invalid. amountEntry must be valid number');
+                    }
+                }
+            });
+
+            return {
+                monthNumber: month,
+                month: listOfMonths[month].substr(0, 3),
+                amountEntry,
+                amountOutput,
+            }
+        }).filter(item => {
+            const currentMonth = new Date().getMonth();
+            const currentYear = new Date().getFullYear();
+
+            return (yearSelected === currentYear && item.monthNumber <= currentMonth) ||
+            (yearSelected < currentYear);
+        });
+    }, [yearSelected]);
 
     const handleMonthSelected = (month: string) => {
         try {
@@ -209,6 +258,12 @@ const Dashboard: React.FC = () => {
                 />
 
                 <PieChartBox data={relationExpensesVersusGains} />
+
+                <HistoryBox
+                    data={historyData}
+                    lineColorAmountEntry='#F7931B'
+                    lineColorAmountOutput='#E44C4E'
+                />
             </Content>
         </Container>
     );
