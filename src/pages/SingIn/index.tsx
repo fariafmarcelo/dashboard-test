@@ -9,6 +9,7 @@ import {
 } from './styles';
 
 import Input from '../../components/Input';
+import Button from '../../components/Button';
 
 import LogoImg from '../../assets/logo.svg'
 
@@ -34,7 +35,9 @@ const SingIn: React.FC = () => {
                     placeholder='senha'
                 />
 
-                <button type="submit">Acessar</button>
+                <Button type="submit">
+                    Acessar
+                </Button>
             </Form>
         </Container>
     );

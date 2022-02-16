@@ -43,6 +43,8 @@ export const Form = styled.div`
 export const FormTitle = styled.h1`
     color: ${props => props.theme.colors.white};
 
+    margin-bottom: 40px;
+
     &:after {
         content: '';
         display: block;
