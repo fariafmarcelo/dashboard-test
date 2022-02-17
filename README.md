@@ -9,11 +9,8 @@ Não há banco de dados. Os dados são carregados de 2 arquivos que contém arra
 - Após clicar no botão "Acessar" você será redirecionado para a Dashboard.
 ### Layout & Componentes Responsivos
 
-<div align="center" >
-  <img src="./docs/assets/resposiveview.png">
-</div>
-
 - [x] Link do prototipo desenvolvido no [**Figma**](https://www.figma.com/file/nOGmUkhcINJt6nd57R4ENu/Untitled?node-id=0%3A1).
+- [x] OBS: Não realizei a criação do prototipo.
 
 ### Bibliotecas Utilizadas
 
