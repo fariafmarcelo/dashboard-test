@@ -29,7 +29,7 @@ export const Title = styled.h2`
     margin-left: 7px;
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
     width: 300px;
     height: 300px;
 

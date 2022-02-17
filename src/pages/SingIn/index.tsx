@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Container,
@@ -11,9 +11,16 @@ import {
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
+import { useAuth } from '../../hooks/auth';
+
 import LogoImg from '../../assets/logo.svg'
 
 const SingIn: React.FC = () => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const { singIn } = useAuth();
+
     return (
         <Container>
             <Logo>
@@ -21,18 +28,20 @@ const SingIn: React.FC = () => {
                 <Title>Minha Dashboard</Title>
             </Logo>
 
-            <Form onSubmit={() => {}}>
+            <Form onSubmit={() => singIn(email, password)}>
                 <FormTitle>Entrar</FormTitle>
 
                 <Input
                     type="email"
                     required
                     placeholder='e-mail'
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <Input
                     type="password"
                     required
                     placeholder='senha'
+                    onChange={(e) => setPassword(e.target.value)}
                 />
 
                 <Button type="submit">

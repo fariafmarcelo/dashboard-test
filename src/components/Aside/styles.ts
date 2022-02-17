@@ -51,3 +51,28 @@ export const MenuItemLink = styled(Link)`
         margin-right: 5px;
     }
 `;
+
+export const MenuItemButton = styled.button`
+    font-size: 16px;
+    text-decoration: none;
+    border: none;
+    background: none;
+
+    color: ${props => props.theme.colors.info};
+    text-decoration: none;
+    transition: opacity ease .3s;
+    
+    display: flex;
+    align-items: center;
+
+    margin: 7px 0;
+
+    &:hover {
+        opacity: .7;
+    }
+
+    > svg {
+        font-size: 18px;
+        margin-right: 5px;
+    }
+`;

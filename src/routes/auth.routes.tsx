@@ -4,7 +4,7 @@ import SingIn from '../pages/SingIn';
 
 const AuthRoutes: React.FC = () => (
     <Routes>
-        <Route path="/" element={<SingIn />} />
+        <Route path="*" element={<SingIn />} />
     </Routes>
 );
 
