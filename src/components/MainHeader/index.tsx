@@ -4,11 +4,11 @@ import {
     Profile,
     Welcome,
     UserName,
+    Toggle,
 } from './styles';
 
 import { useTheme } from '../../hooks/theme';
 
-import Toggle from '../Toggle/';
 import Emojis from '../../utils/emojis';
 
 const MainHeader: React.FC = () => {

@@ -27,15 +27,45 @@ export const Container = styled.div<IContainerProps>`
         right: -25px;
         opacity: .3;
     }
+
+    @media only screen and (max-width: 420px) {
+        width: 100%;
+    }
 `;
 
 export const Title = styled.span`
     font-size: 18px;
     font-weight: 500;
+
+    @media only screen and (max-width: 770px) {
+        font-size: 14px;
+    }
 `;
 
 export const Amount = styled.h1`
-    
+    @media only screen and (max-width: 770px) {
+        word-wrap: break-word;
+        font-size: 20px;
+
+        > strong {
+            display: inline-block;
+            width: 100%;
+            font-size: 14px;
+        }
+    }
+
+    @media only screen and (max-width: 420px) {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+
+        > strong {
+            position: initial;
+            width: auto;
+            font-size: 18px;
+            margin-right: 3px;
+        }
+    }
 `;
 
 export const FooterLabel = styled.small`

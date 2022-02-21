@@ -15,6 +15,14 @@ export const Container = styled.div`
     border-radius: 7px;
 
     display: flex;
+
+    @media only screen and (max-width: 1200px) {
+        display: flex;
+        flex-direction: column;
+
+        width: 100%;
+        height: auto;
+    }
 `;
 
 export const SideLeft = styled.aside`
@@ -45,9 +53,6 @@ export const LegendContainer = styled.ul`
     max-height: 175px;
     overflow-y: scroll;
 
-    position: absolute;
-    bottom: 20px;
-
     ::-webkit-scrollbar {
         width: 10px;
     }
@@ -60,6 +65,13 @@ export const LegendContainer = styled.ul`
     ::-webkit-scrollbar-track {
         background-color: ${props => props.theme.colors.tertiary};
     }
+
+    @media only screen and (max-width: 1200px) {
+        display: flex;
+        justify-content: space-between;
+
+        height: auto;
+    }
 `;
 
 export const Legend = styled.li`
@@ -68,6 +80,10 @@ export const Legend = styled.li`
 
     margin-bottom: 7px;
     font-size: 14px;
+
+    @media only screen and (max-width: 1200px) {
+        font-size: 11px;
+    }
 `;
 
 export const Percentage = styled.div<IPercentageProps>`

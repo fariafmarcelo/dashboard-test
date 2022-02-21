@@ -17,6 +17,10 @@ export const Container = styled.div`
     padding: 30px 20px;
 
     border-radius: 7px;
+
+    @media only screen and (max-width: 1280px) {
+        height: 400px;
+    }
 `;
 
 export const Title = styled.h2`
@@ -33,6 +37,10 @@ export const Header = styled.header`
     width: 100%;
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
 `;
 
 export const LegendContainer = styled.ul`
@@ -48,6 +56,10 @@ export const Legend = styled.li`
     margin-left: 7px;
     margin-bottom: 7px;
     font-size: 14px;
+
+    @media only screen and (max-width: 1200px) {
+        margin-left: 16px;
+    }
 `;
 
 export const Percentage = styled.div<IPercentageProps>`
